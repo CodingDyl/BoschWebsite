@@ -60,6 +60,7 @@ if (isset($_POST['submit'])) {
     <div class="formContainer">
         <form action="" method="post">
             <h3>register now</h3>
+            <h3>northcliff auto</h3>
             <input type="text" name="name" placeholder="enter in your name" required class="box">
             <input type="email" name="email" placeholder="enter in your email" required class="box">
             <input type="password" name="password" placeholder="enter in your password" required class="box">

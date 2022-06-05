@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['customer_name'] = $row['cusName'];
         $_SESSION['customer_email'] = $row['cusEmail'];
         $_SESSION['customer_id'] = $row['cusId'];
-        header('location:index.html');
+        header('location:home.php');
     } else {
         $message[] = 'incorrect password or email entered!';
     }
@@ -55,7 +55,7 @@ if (isset($_POST['submit'])) {
 
     <div class="formContainer">
         <form action="" method="post">
-            <h3>login now</h3>
+            <h3>login northcliff auto</h3>
             <input type="email" name="email" placeholder="enter in your email" required class="box">
             <input type="password" name="password" placeholder="enter in your password" required class="box">
             <input type="submit" name="submit" value="login now" class="btn">
