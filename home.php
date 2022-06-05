@@ -150,10 +150,72 @@ if (!isset($customer_id)) {
 	</div>
 
 	<div class="yearSection">
-		<img src="./images/bosch_workshop_1.jpeg" alt="">
 		<div class="yearText">
-			<h3>20 years of experience</h3>
-			<p>“Myself and my dedicated team are always ready to assist you with all your vehicle needs, there’s no job too big or small for us!” says operating partner Jacques Petzer, who has over 20 years worth of experience in vehicles and servicing in the area</p>
+			<div class="text">
+				<h3>20 years of experience</h3>
+				<p>“Myself and my dedicated team are always ready to assist you with all your vehicle needs, there’s no job too big or small for us!” says operating partner Jacques Petzer, who has over 20 years worth of experience in vehicles and servicing in the area</p>
+			</div>
+			<div class="jacq">
+				<img src="./images/workshop.jpeg" alt="partner">
+			</div>
+		</div>
+	</div>
+
+	<div class="choose">
+		<h2>why choose us?</h2>
+		<p>Northcliff Auto is a proud member of Bosch Car Service</p>
+		<div class="chooseSection">
+			<div class="item">
+				<img src="./images/rmi_choose.png" alt="rmi approved">
+			</div>
+			<div class="item">
+				<img src="./images/miwa_choose.png" alt="miwa approved">
+			</div>
+			<div class="item">
+				<img src="./images/aa_icon_approved.png" alt="aa approved">
+			</div>
+		</div>
+		<div class="chooseCertif">
+			<div class="certif">
+				<img src="./images/RMI approved.jpeg" alt="rmi certificate">
+			</div>
+			<div class="certif">
+				<img src="./images/bosch_graded_work.jpeg" alt="miwa certificate">
+			</div>
+			<div class="certif">
+				<img src="./images/AA_approved.jpeg" alt="aa certificate">
+			</div>
+		</div>
+	</div>
+
+	<div class="serviceBanner">
+		<h2>is your car due for it's service</h2>
+		<p>At Northcliff Auto we service all vehicle makes and models. Our team of dedicated mechanics constantly strive to ensure your vehicle is effectively serviced, repaired and maintained so that it’s driving at its best. Our state of the art diagnostic equipment is designed to diagnose a problem quickly and efficiently to avoid problems turning into major expenses.</p>
+		<button class="serviceBtn">Get A Quote</button>
+	</div>
+
+	<!-- *********************************** Review Section **************************************** -->
+	<div class="reviews">
+		<h2>Reviews</h2>
+		<div class="reviewItems">
+			<div class="line"></div>
+			<div class="review">
+				<img src="./images/quote_image.png" alt="">
+				<h3>The only place I would recommend taking your vehicle.Fantastic and professional service.</h3>
+				<h6>- Callen Valkenburg</h6>
+			</div>
+			<div class="line"></div>
+			<div class="review">
+				<img src="./images/quote_image.png" alt="">
+				<h3>Very professional. It’s the only place I trust to take my car for any kind of repair or check.</h3>
+				<h6>- Jessica Franklin</h6>
+			</div>
+			<div class="line"></div>
+			<div class="review">
+				<img src="./images/quote_image.png" alt="">
+				<h3>The only place I would recommend taking your vehicle.Fantastic and professional service.</h3>
+				<h6>- Annemarie Stierlin</h6>
+			</div>
 		</div>
 	</div>
 

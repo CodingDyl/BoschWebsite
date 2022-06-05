@@ -140,7 +140,7 @@
 }
 
 
-/*home page style*/
+/* ----------------------------------------------- Nav Bar All Pages ------------------------------------------------------ */
 nav {
     display: flex;
     justify-content: space-around;
@@ -230,7 +230,7 @@ nav {
     left: 20;
 }
 
-/* intro */
+/* -------------------------------------------------------- Intro Home Page ----------------------------------------------- */
 .intro {
     display: flex;
     flex-direction: column;
@@ -263,7 +263,7 @@ nav {
 }
 
 
-/* Service Banner */
+/* --------------------------------------------------- Service Banner --------------------------------------------------- */
 .services {
     height: 100vh;
     background-color: var(--boschblue);
@@ -323,6 +323,8 @@ nav {
     text-decoration: underline;
 }
 
+/* -------------------------------------- List Section Home Page ---------------------------------------- */
+
 .listSection {
     min-height: 30vh;
     width: 100%;
@@ -381,57 +383,233 @@ nav {
     font-weight: 500;
 }
 
-.yearSection {
-    min-height: 50vh;
-    position: relative;
-    width: 100%;
-}
+/* ----------------------------------------------- Year Section Home Page ------------------------------------------------- */
 
-.yearSection img {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: .6;
-    background-color: var(--boschblue);
-    z-index: 0;
-    filter: brightness(35%);
+.yearSection {
+    min-height: 65vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background:rgba(0,0,0,0.7)url(../images/bosch_working_2.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
 }
 
 .yearText {
-    margin-top: 40px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.yearText .text h3 {
+    font-size: 62px;
+    font-weight: bold;
+    color: var(--white-header);
+    text-transform: capitalize;
+}
+
+.yearText .text p {
+    font-size: 25px;
+    font-weight: 300;
+    color: var(--white-header);
+    z-index: 1;
+}
+
+.yearText .jacq {
+    width: 80%;
+}
+
+.yearText .jacq img {
+    width: 100%;
+    height: auto;
+}
+
+
+
+/* ----------------------------------------- Why choose us  Home Page -------------------------------------------------------*/
+
+.choose {
+    height: 120vh;
+    width: 100%;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center center;
-    align-content: center;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    z-index: 1;
-    padding: 20px 20px;
 }
 
-.yearText h3 {
-    font-size: 65px;
-    color: var(--white);
-    font-weight: bold;
-    letter-spacing: .5rem;
+.choose h2 {
+    font-size: 62px;
+    color: var(--boschblue);
+    font-weight: 500;
     text-transform: capitalize;
-    z-index: 1;
 }
 
-.yearText p {
-    font-size: 32px;
-    color: var(--white);
-    z-index: 1;
+.choose p {
+    font-size: 20px;
+    color: var(--darkblue);
     font-weight: 300;
 }
 
+.chooseSection {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.chooseSection .item {
+    width: 25%;
+}
+
+.chooseSection .item img {
+    height: 120px;
+    width: 140px;
+}
+
+.chooseCertif {
+    margin-top: 40px;
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.chooseCertif .certif {
+    width: 25%;
+}
+
+.chooseCertif .certif img {
+    width: 100%;
+    height: auto;
+}
+
+/* --------------------------------------------- Service Banner Home Page ------------------------------------------------- */
+
+.serviceBanner {
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7)url(../images/servicing_car.avif);
+    background-size: cover;
+    background-blend-mode: darken;
+}
+
+.serviceBanner h2 {
+    font-size: 62px;
+    font-weight: bold;
+    color: var(--white-header);
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+
+.serviceBanner p {
+    font-size: 25px;
+    font-weight: 300;
+    color: var(--white-header);
+    margin-bottom: 20px;
+}
+
+
+.serviceBtn {
+    height: 60px;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 16px;
+    background-color: var(--darkblue);
+    color: white;
+    transition: .5s ease;
+    cursor: pointer;
+    border-radius: 15%;
+    border: none;
+}
+
+.serviceBtn:hover {
+    background-color: var(--white);
+    color: var(--boschblue);
+    transition: .5s ease;
+}
+
+/* --------------------------------------------- Reviews Home Page ------------------------------------------------------- */
+
+.reviews {
+    height: 60vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-direction: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.reviews h2 {
+    margin-bottom: 20px;
+    font-size: 62px;
+    font-weight: bold;
+    color: var(--boschblue);
+}
+
+.reviewItems {
+    display: flex;
+    margin-right: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.line {
+    border-left: 5px solid var(--boschblue);
+}
+
+.review {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 20%;
+    padding: 0 20px;
+}
+
+.review img {
+    height: 60px;
+    width: 60px;
+    color: var(--boschblue);
+}
+
+.review h3 {
+    font-size: 25px;
+    font-weight: 300;
+    color: var(--darkblue);
+}
+
+.review h6 {
+    font-style: italic;
+    font-weight: 200;
+    font-size: 20px;
+}
 
 
 
 
 
-/*                          Contact Page                         */
+
+
+/*   ------------------------------------------  Contact Page  -------------------------------------------------------------  */
 
 .contact {
     position: relative;
