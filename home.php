@@ -191,7 +191,7 @@ if (!isset($customer_id)) {
 	<div class="serviceBanner">
 		<h2>is your car due for it's service</h2>
 		<p>At Northcliff Auto we service all vehicle makes and models. Our team of dedicated mechanics constantly strive to ensure your vehicle is effectively serviced, repaired and maintained so that it’s driving at its best. Our state of the art diagnostic equipment is designed to diagnose a problem quickly and efficiently to avoid problems turning into major expenses.</p>
-		<button class="serviceBtn">Get A Quote</button>
+		<button type="submit" class="serviceBtn" id="quoteBtn" onclick="nextPage()">Get A Quote</button>
 	</div>
 
 	<!-- *********************************** Review Section **************************************** -->
@@ -225,8 +225,8 @@ if (!isset($customer_id)) {
 			<p>We are always happy to help. Get in touch with us today. Contact our experienced manager Jacques Petzer on 011 431 3710 or 065 878 5101.</p>
 		</div>
 		<div class="socials">
-			<div class="socialBox"><i class="fa fa-facebook" aria-hidden="true"></i></div>
-			<div class="socialBox"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+			<div class="socialBox" id="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+			<div class="socialBox" id="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></div>
 		</div>
 		<div class="footClose">
 			<h2>© 2022 northcliff auto</h2>

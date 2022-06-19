@@ -1,3 +1,31 @@
+<?php
+
+include('connect.php');
+session_start();
+
+$customer_id = $_SESSION['customer_id'];
+$customer_name = $_SESSION['customer_name'];
+$customer_email = $_SESSION['customer_email'];
+
+if (isset($_POST['submit'])) {
+    $number = mysqli_real_escape_string($conn, $_POST['mobile']);
+    $email_second = mysqli_real_escape_string($conn, $_POST['email-second']);
+
+    $find_email = mysqli_query($conn, "SELECT * FROM `customers` WHERE cusEmail = '$email_second' AND cusId = '$customer_id'");
+
+    if (mysqli_num_rows($find_email) > 0) {
+        mysqli_query($conn, "UPDATE `customers` SET cusNumber = '$number' WHERE cusId = '$customer_id'");
+        $message[] = "number added to database";
+    } else {
+        $message[] = "User doesn't exist";
+    }
+
+    // -------------- Going to post message to admin page and email ---------------
+}
+
+
+?>
+
 <!Doctype html>
 <html>
 
@@ -35,11 +63,25 @@
         </div>
     </nav>
 
+    <?php
+
+    if (isset($message)) {
+        foreach ($message as $message) {
+            echo '<div class="message">
+                      <span>' . $message . '</span>
+                      <i class="fas fa-times" onclick="this.parentElement.remove()"></i>
+                    </div>
+                   ';
+        }
+    }
+
+    ?>
+
     <section class="contact">
         <img src="./images/bg2.avif" alt="">
         <div class="content">
             <h2>contact us</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores porro iusto accusamus laboriosam, explicabo aut soluta facilis quidem, incidunt perferendis id inventore sapiente. Dolorem ut incidunt cum aut! Ut, optio.</p>
+            <p>At Northcliff Auto we service all vehicle makes and models. Our team of dedicated mechanics constantly strive to ensure your vehicle is effectively serviced, repaired and maintained so that it’s driving at its best.</p>
         </div>
         <div class="contactContainer">
             <div class="contactInfo">
@@ -72,26 +114,26 @@
                 </div>
             </div>
             <div class="contactForm">
-                <form action="">
+                <form action="" method="post">
                     <h2>get in touch</h2>
                     <div class="inputbox">
-                        <input type="text" name="name" required>
+                        <input type="text" name="name-contact" id="name-contact" required>
                         <span>Full Name</span>
                     </div>
                     <div class="inputbox">
-                        <input type="text" name="email" required>
+                        <input type="text" name="email-second" id="email-second" required>
                         <span>Email Address</span>
                     </div>
                     <div class="inputbox">
-                        <input type="text" name="mobile" required>
+                        <input type="text" name="mobile" id="mobile" required>
                         <span>Mobile Number</span>
                     </div>
                     <div class="inputbox">
-                        <textarea required="required"></textarea>
+                        <textarea required="required" name="msg" id="msg"></textarea>
                         <span>Type Your Message...</span>
                     </div>
                     <div class="inputbox">
-                        <input type="submit" value="Send" name="send">
+                        <input type="submit" value="Send" name="send" onsubmit="sendEmail(); reset(); return false">
                     </div>
                 </form>
             </div>
@@ -104,15 +146,31 @@
             <p>We are always happy to help. Get in touch with us today. Contact our experienced manager Jacques Petzer on 011 431 3710 or 065 878 5101.</p>
         </div>
         <div class="socials">
-            <div class="socialBox"><i class="fa fa-facebook" aria-hidden="true"></i></div>
-            <div class="socialBox"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+            <div class="socialBox" id="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+            <div class="socialBox" id="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></div>
         </div>
         <div class="footClose">
             <h2>© 2022 northcliff auto</h2>
         </div>
     </footer>
 
-    <script src="javascript/app.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail() {
+            Email.send({
+                Host: "smtp.gmail.com",
+                Username: "2610dylan@gmail.com",
+                Password: "2101taryn",
+                To: '2610dylan@gmail.com',
+                From: document.getElementById('email-second').value,
+                Subject: "New Contact Form Enquiry",
+                Body: "Name: " + document.getElementById('name-contact').value + "<br> Email: " + document.getElementById('email-second').value + "<br> Number: " + document.getElementById('number').value + "<br> Message: " + document.getElementById('msg').value
+
+            }).then(
+                message => alert("Message Sent Successfully")
+            );
+        }
+    </script>
 
 </body>
 

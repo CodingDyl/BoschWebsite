@@ -326,10 +326,10 @@ nav {
 /* -------------------------------------- List Section Home Page ---------------------------------------- */
 
 .listSection {
-    min-height: 30vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
     width: 100%;
     position: relative;
-    margin-top: 30px;
 }
 
 .lists {
@@ -547,7 +547,6 @@ nav {
 /* --------------------------------------------- Reviews Home Page ------------------------------------------------------- */
 
 .reviews {
-    height: 60vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -556,6 +555,7 @@ nav {
     align-items: center;
     text-align: center;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .reviews h2 {
@@ -759,6 +759,124 @@ nav {
     font-size: 18px;
 }
 
+/* --------------------------------------- Quote Page ----------------------------------------------------------- */
+/* ----------------------------------------Quote Section --------------------------------------------------------*/
+
+.sectionQuote {
+    min-height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7)url(../images/quote_img.avif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sectionQuote .quoteForm {
+    height: 80vh;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    background-color: var(--white);
+    opacity: .8;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.sectionQuote .quoteForm .form-group label {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--darkblue);
+    margin-bottom: 2px;
+}
+
+.sectionQuote .quoteForm .form-group select {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+
+
+#loading img {
+    width: 200px;
+    height: 200px;
+    display: none;
+    margin: 0 auto;
+}
+
+.error {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: red;
+    color: var(--white);
+    font-weight: bold;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+.content-form {
+    margin-top: 30px;
+}
+
+#result {
+    margin-bottom: 10px;
+}
+
+#result div {
+    border: 1px solid var(--boschblue);
+    text-align: center;
+    padding: 0  0 20px 0;
+}
+
+#result div p {
+    margin-bottom: 0;
+    text-transform: capitalize;
+    font-size: 12px;
+}
+
+#result div p.header {
+    background-color: var(--boschblue);
+    margin-bottom: 10px;
+    color: white;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.book-quote {
+    font-size: 32px;
+    text-decoration: none;
+    color: var(--darkblue);
+    display: none;
+}
+
+.book-quote:hover {
+    text-decoration: underline;
+}
+
+#result div p.total {
+    font-weight: bold;
+}
+
+.form-check-label label {
+    font-weight: 300;
+    color: black;
+}
 
 
 @media screen and (max-width:1024px) {
@@ -784,7 +902,146 @@ nav {
     .contact img {
         opacity: 0;
     }
+
+    .sectionQuote .quoteForm {
+        height: 100%;
+        width: 100%;
+    }
 }
+
+
+/* ------------------------------------- About Page ---------------------------------------------- */
+.about {
+    min-height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7)url(../images/tyre_change.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+    display: flex;
+    justify-content: center;
+}
+
+.about .about-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.about-content img {
+    height: 30vh;
+    width: 15vw;
+}
+
+.about-content h3 {
+    font-size: 62px;
+    color: var(--white-header);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.about-content p {
+    text-transform: capitalize;
+    font-size: 30px;
+    font-weight: 300;
+    color: var(--white);
+}
+
+.about-content a.contactButton {
+    padding: .5rem 1.2rem;
+    justify-content: center;
+    background-color: var(--boschblue);
+    color: var(--white-header);
+    border: 3px solid var(--darkblue);
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.about-content a.contactButton:hover {
+    background-color: var(--white);
+    color: var(--boschblue);
+}
+
+.whatDo {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.whatDo h3 {
+    font-size: 62px;
+    color: var(--darkblue);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.whatDo .whatDo-icons {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.whatDo .whatDo-icons img {
+    height: 20vh;
+    width: 20vw;
+}
+
+.offer {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.offer h3 {
+    font-size: 62px;
+    color: var(--darkblue);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.offer-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.offer-items {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    justify-content: center;
+    width: 25%;
+}
+
+.offer-items h3 {
+    font-size: 45px;
+    color: var(--darkblue);
+    font-weight: 700;
+    letter-spacing: .5px;
+}
+
+.offer-items p {
+    font-size: 22px;
+    font-weight: 300;
+    color: black;
+}
+
+
+
 
 /* Footer */
 
@@ -898,6 +1155,10 @@ nav {
     display: none;
 }
 
+.review {
+    flex-direction: column;
+}
+
 
 }
 
@@ -923,6 +1184,40 @@ nav {
 
 .toggle .line3 {
     transform: rotate(45deg) translate(-5px, -6px);
+}
+
+
+/* ----------------------------------- Booking Page --------------------------------------- */
+table {
+    table-layout: fixed;
+
+}
+
+td {
+    width: 33%;
+}
+
+
+.today {
+    background-color: var(--darkblue);
+    color: var(--white-header);
+}
+
+.buttons {
+    margin-top:  50px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.buttons .but-back button {
+    padding: 20px 30px;
+    background-color: var(--boschblue);
+    color: var(--white-header);
+    font-size: 32px;
+    font-weight: bold;
 }
 
 
