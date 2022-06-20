@@ -4,8 +4,8 @@ include('connect.php');
 
 session_start();
 
-$customer_id = $_SESSION['customer_id'];
-$customer_name = $_SESSION['customer_name'];
+$customer_id = $_SESSION['user_id'];
+$customer_name = $_SESSION['user_name'];
 
 if (!isset($customer_id)) {
 	header('location:login.php');

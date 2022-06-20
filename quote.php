@@ -4,22 +4,31 @@ include('connect.php');
 session_start();
 
 //getting logged in customer details
-$customer_id = $_SESSION['customer_id'];
-$customer_name = $_SESSION['customer_name'];
-$today_date = getdate();
+$customer_id = $_SESSION['user_id'];
+$customer_name = $_SESSION['user_name'];
 
 if (isset($_POST['submit'])) {
 
-    $car = mysqli_real_escape_string($conn, $_POST['manu']);
-    $fuelType = mysqli_real_escape_string($conn, $_POST['fType']);
-    $carType = mysqli_real_escape_string($conn, $_POST['Type']);
+    $car = $_POST['manu'];
+    $fuelType = $_POST['fType'];
+    $carType = $_POST['Type'];
     $year = $_POST['year'];
-    $serviceType =  mysqli_real_escape_string($conn, $_POST['level']);
+    $serviceType =  $_POST['level'];
     $getPrice = $_COOKIE['price'];
 
-    $insert = "INSERT INTO `quotes` (quoteCusId, quoteCarType, quotePrice, quoteDate, quoteFuelType, quoteYear, quoteVehicleType) VALUES ('$customer_id', '$car', '$getPrice', '$todayDate', '$fuelType', '$year', '$carType')";
+    $insert = "INSERT INTO `Quotes` (quoteCusId, quoteCarType, quotePrice, quoteDate, quoteFuelType, quoteYear, quoteVehicleType, quoteServiceType) VALUES ('$customer_id', '$car', '$getPrice', '$todayDate', '$fuelType', '$year', '$carType', '$serviceType')";
 
     mysqli_query($conn, $insert) or die('query failed');
+    $message[] = "Thanks $customer_name for requesting a quote, your $car is in good hands.";
+}
+
+$select_cusCar = mysqli_query($conn, "SELECT * FROM `Quotes` WHERE quoteCusId = '$customer_id'");
+
+if (mysqli_num_rows($select_cusCar) > 0) {
+    $row = mysqli_fetch_assoc($select_cusCar);
+
+    $_SESSION['quotePrice'] = $row['quotePrice'];
+    $_SESSION['quote_id'] = $row['quoteID'];
 }
 
 
@@ -35,7 +44,6 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/banner.css">
     <title>Bosch Website</title>
 
 </head>
@@ -62,12 +70,27 @@ if (isset($_POST['submit'])) {
         </div>
     </nav>
 
+
+    <?php
+
+    if (isset($message)) {
+        foreach ($message as $message) {
+            echo '<div class="message">
+                      <span>' . $message . '</span>
+                      <i class="fas fa-times" onclick="this.parentElement.remove()"></i>
+                    </div>
+                   ';
+        }
+    }
+
+    ?>
+
     <div class="sectionQuote">
         <div class="quoteForm">
-            <form action="#" id="request-quote">
+            <form action="quote.php" method="post" id="request-quote">
                 <div class="form-group">
                     <label for="type" class="type">Type:</label>
-                    <select name="car-type" id="type" class="form-control">
+                    <select name="type" id="type" class="form-control">
                         <option value="">Select</option>
                         <option value="Light">Light Motor Vehicle</option>
                         <option value="Truck">Truck</option>
@@ -75,7 +98,7 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="form-group">
                     <label for="fueltype" class="fueltype">Fuel Type:</label>
-                    <select name=fuel-type" id="ftype" class="form-control">
+                    <select name="ftype" id="ftype" class="form-control">
                         <option value="">Select</option>
                         <option value="Petrol">Petrol</option>
                         <option value="Diesel">Diesel</option>
@@ -84,7 +107,7 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="form-group">
                     <label for="manufact" class="manufact">Manufacturer:</label>
-                    <select name="car-manu" id="manu" class="form-control">
+                    <select name="manu" id="manu" class="form-control">
                         <option value="">Select</option>
                         <option value="1">Alfa Romeo</option>
                         <option value="2">Audi</option>
@@ -174,9 +197,8 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div id="result"></div>
                 <a class="book-quote" id="book" href="booking.php">Book Service Now?</a>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-raised btn-prmary">Get Quote</button>
-                </div>
+                <button type="submit" class="btn btn-raised btn-prmary" name="submit" value="submit">Get Quote</button>
+
             </form>
         </div>
     </div>

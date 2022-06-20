@@ -1,6 +1,5 @@
 <?php
 
-session_unset();
 include("connect.php");
 session_start();
 
@@ -14,10 +13,20 @@ if (isset($_POST['submit'])) {
     if (mysqli_num_rows($select_users) > 0) {
         $row = mysqli_fetch_assoc($select_users);
 
-        $_SESSION['customer_name'] = $row['cusName'];
-        $_SESSION['customer_email'] = $row['cusEmail'];
-        $_SESSION['customer_id'] = $row['cusId'];
-        header('location:home.php');
+        if ($row['user_type'] == 'admin') {
+
+            $_SESSION['admin_name'] = $row['cusName'];
+            $_SESSION['admin_email'] = $row['cusEmail'];
+            $_SESSION['admin_id'] = $row['cusId'];
+            header('location:admin_page.php');
+        } else {
+
+            $_SESSION['user_name'] = $row['cusName'];
+            $_SESSION['user_email'] = $row['cusEmail'];
+            $_SESSION['user_id'] = $row['cusId'];
+            $_SESSION['user_number'] = $row['cusNumber'];
+            header('location:home.php');
+        }
     } else {
         $message[] = 'incorrect password or email entered!';
     }

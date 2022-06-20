@@ -8,6 +8,7 @@ if (isset($_POST['submit'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
     $cpass = mysqli_real_escape_string($conn, md5($_POST['cpassword']));
+    $user_type = $_POST['user_type'];
 
     $select_users = mysqli_query($conn, "SELECT * FROM `customers` WHERE cusEmail = '$email' AND cusPassword = '$pass'") or die('query failed!');
 
@@ -19,7 +20,7 @@ if (isset($_POST['submit'])) {
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $message[] = 'invalid email entered';
         } else {
-            mysqli_query($conn, "INSERT INTO `customers` (cusName, cusEmail , cusPassword) VALUES ('$name', '$email', '$pass')") or die('query failed');
+            mysqli_query($conn, "INSERT INTO `customers` (cusName, cusEmail , cusPassword, user_type) VALUES ('$name', '$email', '$pass', '$user_type')") or die('query failed');
             $message[] = 'registered successfully!';
             header('location:login.php');
         }
@@ -65,6 +66,10 @@ if (isset($_POST['submit'])) {
             <input type="email" name="email" placeholder="enter in your email" required class="box">
             <input type="password" name="password" placeholder="enter in your password" required class="box">
             <input type="password" name="cpassword" placeholder="confirm your password" required class="box">
+            <select name="user_type" class="box">
+                <option value="user">user</option>
+                <option value="admin">admin</option>
+            </select>
             <input type="submit" name="submit" value="register now" class="btn">
             <p>already have an account ? <a href="login.php">login now</p>
         </form>

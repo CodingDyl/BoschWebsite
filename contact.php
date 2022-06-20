@@ -3,22 +3,26 @@
 include('connect.php');
 session_start();
 
-$customer_id = $_SESSION['customer_id'];
-$customer_name = $_SESSION['customer_name'];
-$customer_email = $_SESSION['customer_email'];
+$customer_id = $_SESSION['user_id'];
 
 if (isset($_POST['submit'])) {
-    $number = mysqli_real_escape_string($conn, $_POST['mobile']);
+    $number = $_POST['mobile'];
     $email_second = mysqli_real_escape_string($conn, $_POST['email-second']);
 
-    $find_email = mysqli_query($conn, "SELECT * FROM `customers` WHERE cusEmail = '$email_second' AND cusId = '$customer_id'");
+    $find_id = mysqli_query($conn, "SELECT * FROM `customers` WHERE cusId = '$customer_id'");
 
-    if (mysqli_num_rows($find_email) > 0) {
+    if (mysqli_num_rows($find_id) > 0) {
         mysqli_query($conn, "UPDATE `customers` SET cusNumber = '$number' WHERE cusId = '$customer_id'");
-        $message[] = "number added to database";
     } else {
         $message[] = "User doesn't exist";
     }
+
+    //add to message database
+    $message_cus = $_POST['msg'];
+    $name = $_POST['name-contact'];
+
+    mysqli_query($conn, "INSERT INTO `messages` (name, email, number, message) VALUES ('$name', '$email_second', '$number', '$message_cus')");
+    $message[] = "Your message has been sent";
 
     // -------------- Going to post message to admin page and email ---------------
 }
@@ -36,7 +40,6 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/banner.css">
     <title>Bosch Website</title>
 
 </head>
@@ -133,7 +136,7 @@ if (isset($_POST['submit'])) {
                         <span>Type Your Message...</span>
                     </div>
                     <div class="inputbox">
-                        <input type="submit" value="Send" name="send" onsubmit="sendEmail(); reset(); return false">
+                        <input type="submit" value="submit" name="submit" onsubmit="sendEmail()">
                     </div>
                 </form>
             </div>
